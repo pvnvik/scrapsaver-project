@@ -1,0 +1,137 @@
+/* Incentives Page Styles */
+.incentives-section {
+    max-width: 1400px;
+    margin: 0 auto 6rem;
+    padding: 0 2rem;
+}
+
+.incentives-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* Enforce 3 columns horizontally */
+    gap: 2rem;
+    align-items: stretch;
+    padding-top: 2rem;
+}
+
+@media (max-width: 900px) {
+    .incentives-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+}
+
+.tier-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 1.5rem;
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.tier-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08);
+}
+
+/* Tier: Eco Starter */
+.tier-starter {
+    border-top: 5px solid #a3a3a3;
+}
+
+/* Tier: Earth Guardian */
+.tier-guardian {
+    border-top: 5px solid var(--primary);
+    transform: scale(1.05);
+    z-index: 2;
+    box-shadow: 0 25px 50px -10px rgba(16, 185, 129, 0.15);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.tier-guardian:hover {
+    transform: scale(1.08) translateY(-10px);
+}
+
+.tier-guardian::before {
+    content: 'MOST POPULAR';
+    position: absolute;
+    top: 15px;
+    right: -30px;
+    background: var(--primary);
+    color: white;
+    padding: 0.3rem 3rem;
+    transform: rotate(45deg);
+    font-size: 0.7rem;
+    font-weight: 800;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Tier: Planet Hero */
+.tier-hero {
+    border-top: 5px solid #F59E0B;
+    /* Gold/Amber */
+}
+
+.tier-icon {
+    font-size: 4rem;
+    margin-bottom: 0.5rem;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.05));
+}
+
+.tier-name {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin: 0;
+    color: var(--dark);
+}
+
+.tier-requirement {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    background: rgba(0, 0, 0, 0.05);
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    align-self: center;
+}
+
+.tier-features {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 2rem;
+    text-align: left;
+}
+
+.tier-features li {
+    padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: var(--dark);
+    font-size: 0.95rem;
+}
+
+.tier-features li:last-child {
+    border-bottom: none;
+}
+
+.check-icon {
+    color: var(--primary);
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.tier-cta {
+    margin-top: auto;
+    width: 100%;
+}

@@ -1,0 +1,149 @@
+/* MythBuster Section - Infinite Marquee */
+.mythbuster-section {
+    padding: 6rem 0 8rem;
+    /* Remove side padding to let marquee flow */
+    background: radial-gradient(circle at center, rgba(16, 185, 129, 0.05), transparent 70%);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+.section-title {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 800;
+    margin-bottom: 4rem;
+    background: linear-gradient(135deg, var(--dark), var(--primary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    z-index: 1;
+}
+
+/* Marquee Container */
+.marquee-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.marquee-track {
+    display: flex;
+    gap: 2rem;
+    width: max-content;
+    animation: scroll 40s linear infinite;
+    padding: 2rem 0;
+    /* Space for shadow */
+}
+
+.marquee-wrapper:hover .marquee-track {
+    animation-play-state: paused;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-33.33%);
+    }
+
+    /* Move 1/3 of the way (since we tripled content) */
+}
+
+/* Cards */
+.marquee-card {
+    width: 400px;
+    flex-shrink: 0;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    box-shadow:
+        0 10px 30px -5px rgba(0, 0, 0, 0.05),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    user-select: none;
+}
+
+.marquee-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow:
+        0 20px 40px -10px rgba(16, 185, 129, 0.15),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.9);
+    z-index: 10;
+}
+
+.marquee-myth,
+.marquee-fact {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 0.5rem;
+}
+
+.marquee-divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.1), transparent);
+    width: 100%;
+}
+
+.card-emoji {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.text-secondary {
+    color: var(--text-dim);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.text-primary {
+    color: var(--primary);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.marquee-myth p {
+    font-size: 1.1rem;
+    color: var(--text-dim);
+    font-style: italic;
+    margin: 0;
+}
+
+.marquee-fact p {
+    font-size: 1.15rem;
+    color: var(--dark);
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Background blob decoration */
+.mythbuster-section::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 400px;
+    background: radial-gradient(ellipse at center, rgba(5, 150, 105, 0.05) 0%, transparent 70%);
+    z-index: 0;
+    pointer-events: none;
+}
