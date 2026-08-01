@@ -9,51 +9,68 @@ ScrapSaver is a MERN-based web platform for donating e-waste, requesting pickups
 - User dashboard with impact metrics (total kg, CO2 saved, resources conserved) and donation history
 - Service request form for e-waste pickup with address, waste type, quantity, and preferred time
 - Drop-off donation logging and scheduling overview
-- Recycler auction system with real-time bid updates through Socket.IO
-- Nearby e-waste centers listing (ready to be wired to a real maps SDK)
-- About page describing mission and CSR initiatives
+- Recycler auction system with bid placement and live updates
+- EPR Certificate PDF generation for completed donations
+- Admin analytics dashboard for system statistics
+- Ready for zero-config Vercel full-stack deployment
 
 ## Prerequisites
 
 - Node.js 18+
-- MongoDB instance (local or hosted)
+- MongoDB instance (MongoDB Atlas for production, or local MongoDB for dev)
 
-Create a `.env` file in `server/` with at least:
+---
 
-```bash
-MONGO_URI=mongodb://127.0.0.1:27017/scrapsaver
-JWT_SECRET=replace_me
-PORT=5000
-```
+## Local Development
 
-## Install
+1. **Install dependencies**:
+   ```bash
+   npm run install-all
+   ```
 
-```powershell
-cd "c:\Users\vikrant\Desktop\scrapsaver-miniproject"
-npm install
-cd server
-npm install
-cd ..\client
-npm install
-```
+2. **Configure Environment Variables**:
+   Create `server/.env`:
+   ```env
+   MONGO_URI=mongodb://127.0.0.1:27017/scrapsaver
+   JWT_SECRET=your_jwt_secret_key
+   PORT=5000
+   ```
 
-## Run
+3. **Start Development Servers**:
+   In separate terminals:
+   ```bash
+   # Terminal 1: Backend
+   npm run server
 
-In two separate terminals:
+   # Terminal 2: Frontend
+   npm run client
+   ```
+   Frontend runs at `http://localhost:5173`.
 
-```powershell
-cd "c:\Users\vikrant\Desktop\scrapsaver-miniproject\server"
-npm run dev
-```
+---
 
-```powershell
-cd "c:\Users\vikrant\Desktop\scrapsaver-miniproject\client"
-npm run dev
-```
+## 🚀 How to Deploy on Vercel
 
-The frontend is served at `http://localhost:5173` and proxies API calls to `http://localhost:5000`.
+This repository is pre-configured for full-stack deployment on **Vercel** with zero extra build steps.
 
-## Notes
+### Step 1: Set up MongoDB Atlas (Database)
+Since Vercel serverless functions cannot connect to `localhost`, you need a cloud-hosted MongoDB database:
+1. Sign up for a free account at [MongoDB Atlas](https://www.mongodb.com/cloud/atlas).
+2. Create a free M0 Cluster and database user.
+3. In Network Access, allow access from anywhere (`0.0.0.0/0`).
+4. Copy your MongoDB Connection String (e.g. `mongodb+srv://<username>:<password>@cluster0.mongodb.net/scrapsaver?retryWrites=true&w=majority`).
 
-- Map page currently renders a list of centers from `/api/centers`; plug in a real map provider to visualize markers and directions.
-- Seed `Center` and `Donation` data as needed for demos (e.g., via Mongo shell or a simple seed script).
+### Step 2: Push Your Code to GitHub / GitLab / Bitbucket
+Ensure your repository is pushed to your Git provider.
+
+### Step 3: Import Project into Vercel
+1. Go to your [Vercel Dashboard](https://vercel.com/dashboard) and click **"Add New..." -> "Project"**.
+2. Select your `scrapsaver-miniproject` repository.
+3. **Framework Preset**: Vercel will automatically detect `Vite` or select **Vite** / **Other**.
+4. **Root Directory**: Leave as `./` (the root of the repo).
+5. Expand **Environment Variables** and add:
+   - `MONGO_URI`: Your MongoDB Atlas connection string
+   - `JWT_SECRET`: A secure secret string for JWT signing
+6. Click **Deploy**.
+
+Vercel will automatically run `npm run build`, output the static React frontend from `client/dist`, and mount the Express serverless function at `/api/index.js`.
