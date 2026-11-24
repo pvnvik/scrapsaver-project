@@ -250,7 +250,10 @@ export default function DashboardPage() {
               <span style={{ fontSize: '1.5rem' }}>📍</span>
             </div>
             <p className="text-dim" style={{ marginBottom: '1.5rem' }}>
-              Already dropped off e-waste at a partner center? Record it here to update your stats.
+              Already dropped off e-waste at a partner center? Record it here to update your stats.{' '}
+              <Link to="/centers" style={{ color: 'var(--primary)', fontWeight: 600, textDecoration: 'underline' }}>
+                Find nearby centers →
+              </Link>
             </p>
             <form onSubmit={submitDonation} style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
               <input

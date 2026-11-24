@@ -32,6 +32,7 @@ export default function Footer() {
                     <h3 style={{ marginBottom: '1rem', color: 'var(--dark)' }}>Quick Links</h3>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
                         <Link to="/" style={{ color: 'var(--text-dim)' }}>Home</Link>
+                        <Link to="/centers" style={{ color: 'var(--text-dim)' }}>Find Centers</Link>
                         <Link to="/process" style={{ color: 'var(--text-dim)' }}>How it Works</Link>
                         <Link to="/about" style={{ color: 'var(--text-dim)' }}>About Us</Link>
                         <Link to="/incentives" style={{ color: 'var(--text-dim)' }}>Incentives</Link>

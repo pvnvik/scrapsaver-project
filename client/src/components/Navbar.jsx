@@ -19,6 +19,7 @@ export default function Navbar() {
             <div className="nav-links">
                 <Link to="/" className={location.pathname === '/' ? 'text-primary' : ''}>Home</Link>
                 <Link to="/process" className={location.pathname === '/process' ? 'text-primary' : ''}>How it Works</Link>
+                <Link to="/centers" className={location.pathname === '/centers' ? 'text-primary' : ''}>Find Centers</Link>
                 <Link to="/about" className={location.pathname === '/about' ? 'text-primary' : ''}>About</Link>
                 <Link to="/incentives" className={location.pathname === '/incentives' ? 'text-primary' : ''}>Incentives</Link>
 

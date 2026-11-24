@@ -8,6 +8,7 @@ import AboutPage from './pages/AboutPage.jsx';
 import ProcessPage from './pages/ProcessPage.jsx';
 import AdminDashboardPage from './pages/AdminDashboardPage.jsx';
 import IncentivesPage from './pages/IncentivesPage.jsx';
+import MapPage from './pages/MapPage.jsx';
 import { AuthProvider, useAuth } from './context/AuthContext.jsx';
 
 const ProtectedRoute = ({ children }) => {
@@ -50,6 +51,7 @@ export default function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/process" element={<ProcessPage />} />
         <Route path="/incentives" element={<IncentivesPage />} />
+        <Route path="/centers" element={<MapPage />} />
       </Routes>
     </AuthProvider>
   );
